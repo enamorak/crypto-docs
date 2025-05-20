@@ -88,8 +88,9 @@ def Encrypt(filename: str, cipher_name: str):
 
     return encrypted_filename, key_filename
 
-def Decrypt(filename: str, cipher_name: str, key):
+def Decrypt(filename: str, cipher_name: str, key_path: str):
     data = readFile(filename)
+    key = readFile(key_path) 
     name_base, ext = os.path.splitext(filename)
     cipher_name = cipher_name.lower()
 
@@ -112,3 +113,4 @@ def Decrypt(filename: str, cipher_name: str, key):
     decrypted_filename = f"{name_base}_dec{ext}"
     writeToFile(decrypted_filename, decrypted)
     return decrypted_filename
+
